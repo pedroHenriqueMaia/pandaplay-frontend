@@ -4,6 +4,7 @@ import LoginView from '../views/LoginView.vue'
 import ProtectedView from '../views/ProtectedView.vue'
 import CallbackView from '@/views/CallbackView.vue'
 import VideoPlayer from '@/views/VideoPlayer.vue'
+import SuportView from '@/views/SuportView.vue'
 
 const isAuthenticated = () => {
   return !!localStorage.getItem('access_token') // Verifica se o token de acesso está presente
@@ -38,6 +39,12 @@ const router = createRouter({
       path: '/video-player',
       name: 'VideoPlayer',
       component: VideoPlayer,
+      meta: { requiresAuth: true },
+    },
+    {
+      path: '/suporte',
+      name: 'suporte',
+      component: SuportView,
       meta: { requiresAuth: true },
     },
   ],

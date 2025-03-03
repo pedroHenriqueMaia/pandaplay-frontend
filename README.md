@@ -1,45 +1,63 @@
 # pandaplay-frontend
 
-This template should help get you started developing with Vue 3 in Vite.
+## 📌 Requisitos
 
-## Recommended IDE Setup
+- Node.js v18+
+- NPM ou Yarn
+- Excute o backend localmente https://github.com/pedroHenriqueMaia/pandaplay-backend
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## 🔧 Instalação
 
-## Type Support for `.vue` Imports in TS
+1. Clone este repositório:
+   ```sh
+   git clone https://github.com/seu-usuario/seu-repositorio.git
+   ```
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+2. Acesse o diretório do projeto:
+   ```sh
+   cd nome-do-projeto
+   ```
 
-## Customize configuration
+3. Instale as dependências:
+   ```sh
+   npm install
+   # ou
+   yarn install
+   ```
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## ▶️ Executando o Projeto
 
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
+Para iniciar o servidor de desenvolvimento, execute:
 ```sh
 npm run dev
+# ou
+yarn dev
 ```
 
-### Type-Check, Compile and Minify for Production
+A aplicação estará disponível em: [http://localhost:5173](http://localhost:5173) (ou a porta que o Vue/Vite disponibilizar).
 
-```sh
-npm run build
-```
+## 🔑 Autenticação
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+### Login com Google (Auth0)
 
-```sh
-npm run test:unit
-```
+1. Clique no botão "Entrar com Google"
+2. Escolha uma conta do Gmail e faça login
 
-### Lint with [ESLint](https://eslint.org/)
+### Login com E-mail e Senha
 
-```sh
-npm run lint
-```
+Para testar o login com credenciais fixas, utilize:
+- **Usuário comum:**
+  - E-mail: `pedro.maia@gmail.com`
+  - Senha: `teste123`
+- **Usuário de suporte (para testar o chat):**
+  - E-mail: `pedro@suporte.com`
+  - Senha: `teste123`
+
+## 📄 Tecnologias Utilizadas
+
+- Vue.js
+- Vue Router
+- Vuetify
+- Axios
+- Auth0
+- Node.js (Backend para autenticação e suporte ao chat)

@@ -62,11 +62,11 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import axios from 'axios'
-import { useRouter } from 'vue-router' // Importando o Vue Router
+import { useRouter } from 'vue-router'
 
-const router = useRouter() // Usando o Vue Router para navegação
+const router = useRouter()
 
 const isRegistering = ref(false)
 const email = ref('')
@@ -75,6 +75,12 @@ const confirmPassword = ref('')
 const passwordVisible = ref(false)
 const errorMessage = ref('')
 const successMessage = ref('')
+
+onMounted(() => {
+  if (localStorage.getItem('email') || localStorage.getItem('googleId')) {
+    router.push('/dashboard')
+  }
+})
 
 const isFormValid = computed(() => {
   return (
@@ -91,15 +97,23 @@ const togglePasswordVisibility = () => {
 
 const handleLogin = async () => {
   try {
-    await axios.post('http://localhost:3000/auth/login', {
+    const response = await axios.post('http://localhost:3000/auth/login', {
       email: email.value,
       password: password.value,
     })
+
+    localStorage.setItem('email', email.value)
+    localStorage.setItem('googleId', response.data.access_token)
+    localStorage.setItem('access_token', response.data.access_token)
+
+    if (email.value.endsWith('@suporte.com')) {
+      router.push('/suporte')
+    } else {
+      router.push('/dashboard')
+    }
+
     successMessage.value = 'Login bem-sucedido!'
     setTimeout(() => (successMessage.value = ''), 3000)
-
-    // Redireciona para a página desejada após o login
-    router.push('/dashboard') // Altere para o caminho desejado
   } catch (error) {
     errorMessage.value = 'Erro ao fazer login'
     setTimeout(() => (errorMessage.value = ''), 3000)

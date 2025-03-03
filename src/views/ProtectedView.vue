@@ -3,7 +3,7 @@
     <nav class="navbar">
       <h1 class="logo">PandaPlay</h1>
       <ul>
-        <li><a href="#">Suporte</a></li>
+        <li><a href="/suporte">Suporte</a></li>
       </ul>
     </nav>
     <div class="movies-container">
