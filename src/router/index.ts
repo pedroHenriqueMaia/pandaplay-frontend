@@ -1,12 +1,13 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import HomeView from '../views/HomeView.vue';
-import LoginView from '../views/LoginView.vue';
-import ProtectedView from '../views/ProtectedView.vue';
-import CallbackView from '@/views/CallbackView.vue';
+import { createRouter, createWebHistory } from 'vue-router'
+import HomeView from '../views/HomeView.vue'
+import LoginView from '../views/LoginView.vue'
+import ProtectedView from '../views/ProtectedView.vue'
+import CallbackView from '@/views/CallbackView.vue'
+import VideoPlayer from '@/views/VideoPlayer.vue'
 
 const isAuthenticated = () => {
-  return !!localStorage.getItem('access_token'); // Verifica se o token de acesso está presente
-};
+  return !!localStorage.getItem('access_token') // Verifica se o token de acesso está presente
+}
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,16 +33,23 @@ const router = createRouter({
       component: ProtectedView,
       meta: { requiresAuth: true },
     },
+
+    {
+      path: '/video-player',
+      name: 'VideoPlayer',
+      component: VideoPlayer,
+      meta: { requiresAuth: true },
+    },
   ],
-});
+})
 
 // Proteção de rota
 router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth && !isAuthenticated()) {
-    next('/login');
+    next('/login')
   } else {
-    next();
+    next()
   }
-});
+})
 
-export default router;
+export default router
