@@ -61,3 +61,7 @@ Para testar o login com credenciais fixas, utilize:
 - Axios
 - Auth0
 - Node.js (Backend para autenticação e suporte ao chat)
+
+## Mapa de Site UX
+
+<img src="./src/assets/mapa-site-ux.png" > 
